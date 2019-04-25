@@ -1,1 +1,758 @@
-!function(t){var e={};function n(i){if(e[i])return e[i].exports;var r=e[i]={i:i,l:!1,exports:{}};return t[i].call(r.exports,r,r.exports,n),r.l=!0,r.exports}n.m=t,n.c=e,n.d=function(t,e,i){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:i})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var i=Object.create(null);if(n.r(i),Object.defineProperty(i,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var r in t)n.d(i,r,function(e){return t[e]}.bind(null,r));return i},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=3)}([,,,function(t,e,n){"use strict";n.r(e);n(4)},function(t,e,n){!function(e,n){var i=function(t,e){"use strict";if(!e.getElementsByClassName)return;var n,i,r=e.documentElement,a=t.Date,o=t.HTMLPictureElement,s=t.addEventListener,l=t.setTimeout,u=t.requestAnimationFrame||l,c=t.requestIdleCallback,d=/^picture$/i,f=["load","error","lazyincluded","_lazyloaded"],g={},m=Array.prototype.forEach,v=function(t,e){return g[e]||(g[e]=new RegExp("(\\s|^)"+e+"(\\s|$)")),g[e].test(t.getAttribute("class")||"")&&g[e]},y=function(t,e){v(t,e)||t.setAttribute("class",(t.getAttribute("class")||"").trim()+" "+e)},p=function(t,e){var n;(n=v(t,e))&&t.setAttribute("class",(t.getAttribute("class")||"").replace(n," "))},b=function(t,e,n){var i=n?"addEventListener":"removeEventListener";n&&b(t,e),f.forEach(function(n){t[i](n,e)})},z=function(t,i,r,a,o){var s=e.createEvent("CustomEvent");return r||(r={}),r.instance=n,s.initCustomEvent(i,!a,!o,r),t.dispatchEvent(s),s},h=function(e,n){var r;!o&&(r=t.picturefill||i.pf)?r({reevaluate:!0,elements:[e]}):n&&n.src&&(e.src=n.src)},A=function(t,e){return(getComputedStyle(t,null)||{})[e]},C=function(t,e,n){for(n=n||t.offsetWidth;n<i.minSize&&e&&!t._lazysizesWidth;)n=e.offsetWidth,e=e.parentNode;return n},E=(N=[],S=[],L=N,O=function(){var t=L;for(L=N.length?S:N,w=!0,x=!1;t.length;)t.shift()();w=!1},T=function(t,n){w&&!n?t.apply(this,arguments):(L.push(t),x||(x=!0,(e.hidden?l:u)(O)))},T._lsFlush=O,T),_=function(t,e){return e?function(){E(t)}:function(){var e=this,n=arguments;E(function(){t.apply(e,n)})}},M=function(t){var e,n,i=function(){e=null,t()},r=function(){var t=a.now()-n;t<99?l(r,99-t):(c||i)(i)};return function(){n=a.now(),e||(e=l(r,99))}};var w,x,N,S,L,O,T;!function(){var e,n={lazyClass:"lazyload",loadedClass:"lazyloaded",loadingClass:"lazyloading",preloadClass:"lazypreload",errorClass:"lazyerror",autosizesClass:"lazyautosizes",srcAttr:"data-src",srcsetAttr:"data-srcset",sizesAttr:"data-sizes",minSize:40,customMedia:{},init:!0,expFactor:1.5,hFac:.8,loadMode:2,loadHidden:!0,ricTimeout:300};for(e in i=t.lazySizesConfig||t.lazysizesConfig||{},n)e in i||(i[e]=n[e]);t.lazySizesConfig=i,l(function(){i.init&&B()})}();var W=function(){var o,u,f,g,C,w,x,N,S,L,O,T,W,B,F,j,R,k,H,$,D=/^img$/i,I=/^iframe$/i,q="onscroll"in t&&!/glebot/.test(navigator.userAgent),G=0,J=0,K=-1,Q=function(t){J--,t&&t.target&&b(t.target,Q),(!t||J<0||!t.target)&&(J=0)},U=function(t,n){var i,a=t,o="hidden"==A(e.body,"visibility")||"hidden"!=A(t,"visibility");for(N-=n,O+=n,S-=n,L+=n;o&&(a=a.offsetParent)&&a!=e.body&&a!=r;)(o=(A(a,"opacity")||1)>0)&&"visible"!=A(a,"overflow")&&(i=a.getBoundingClientRect(),o=L>i.left&&S<i.right&&O>i.top-1&&N<i.bottom+1);return o},V=function(){var t,a,s,l,c,d,f,m,v,y=n.elements;if((g=i.loadMode)&&J<8&&(t=y.length)){a=0,K++,null==W&&("expand"in i||(i.expand=r.clientHeight>500&&r.clientWidth>500?500:370),T=i.expand,W=T*i.expFactor),G<W&&J<1&&K>2&&g>2&&!e.hidden?(G=W,K=0):G=g>1&&K>1&&J<6?T:0;for(;a<t;a++)if(y[a]&&!y[a]._lazyRace)if(q)if((m=y[a].getAttribute("data-expand"))&&(d=1*m)||(d=G),v!==d&&(w=innerWidth+d*B,x=innerHeight+d,f=-1*d,v=d),s=y[a].getBoundingClientRect(),(O=s.bottom)>=f&&(N=s.top)<=x&&(L=s.right)>=f*B&&(S=s.left)<=w&&(O||L||S||N)&&(i.loadHidden||"hidden"!=A(y[a],"visibility"))&&(u&&J<3&&!m&&(g<3||K<4)||U(y[a],d))){if(it(y[a]),c=!0,J>9)break}else!c&&u&&!l&&J<4&&K<4&&g>2&&(o[0]||i.preloadAfterLoad)&&(o[0]||!m&&(O||L||S||N||"auto"!=y[a].getAttribute(i.sizesAttr)))&&(l=o[0]||y[a]);else it(y[a]);l&&!c&&it(l)}},X=(F=V,R=0,k=i.ricTimeout,H=function(){j=!1,R=a.now(),F()},$=c&&i.ricTimeout?function(){c(H,{timeout:k}),k!==i.ricTimeout&&(k=i.ricTimeout)}:_(function(){l(H)},!0),function(t){var e;(t=!0===t)&&(k=33),j||(j=!0,(e=125-(a.now()-R))<0&&(e=0),t||e<9&&c?$():l($,e))}),Y=function(t){y(t.target,i.loadedClass),p(t.target,i.loadingClass),b(t.target,tt),z(t.target,"lazyloaded")},Z=_(Y),tt=function(t){Z({target:t.target})},et=function(t){var e,n=t.getAttribute(i.srcsetAttr);(e=i.customMedia[t.getAttribute("data-media")||t.getAttribute("media")])&&t.setAttribute("media",e),n&&t.setAttribute("srcset",n)},nt=_(function(t,e,n,r,a){var o,s,u,c,g,v;(g=z(t,"lazybeforeunveil",e)).defaultPrevented||(r&&(n?y(t,i.autosizesClass):t.setAttribute("sizes",r)),s=t.getAttribute(i.srcsetAttr),o=t.getAttribute(i.srcAttr),a&&(u=t.parentNode,c=u&&d.test(u.nodeName||"")),v=e.firesLoad||"src"in t&&(s||o||c),g={target:t},v&&(b(t,Q,!0),clearTimeout(f),f=l(Q,2500),y(t,i.loadingClass),b(t,tt,!0)),c&&m.call(u.getElementsByTagName("source"),et),s?t.setAttribute("srcset",s):o&&!c&&(I.test(t.nodeName)?function(t,e){try{t.contentWindow.location.replace(e)}catch(n){t.src=e}}(t,o):t.src=o),a&&(s||c)&&h(t,{src:o})),t._lazyRace&&delete t._lazyRace,p(t,i.lazyClass),E(function(){(!v||t.complete&&t.naturalWidth>1)&&(v?Q(g):J--,Y(g))},!0)}),it=function(t){var e,n=D.test(t.nodeName),r=n&&(t.getAttribute(i.sizesAttr)||t.getAttribute("sizes")),a="auto"==r;(!a&&u||!n||!t.getAttribute("src")&&!t.srcset||t.complete||v(t,i.errorClass)||!v(t,i.lazyClass))&&(e=z(t,"lazyunveilread").detail,a&&P.updateElem(t,!0,t.offsetWidth),t._lazyRace=!0,J++,nt(t,e,a,r,n))},rt=function(){if(!u)if(a.now()-C<999)l(rt,999);else{var t=M(function(){i.loadMode=3,X()});u=!0,i.loadMode=3,X(),s("scroll",function(){3==i.loadMode&&(i.loadMode=2),t()},!0)}};return{_:function(){C=a.now(),n.elements=e.getElementsByClassName(i.lazyClass),o=e.getElementsByClassName(i.lazyClass+" "+i.preloadClass),B=i.hFac,s("scroll",X,!0),s("resize",X,!0),t.MutationObserver?new MutationObserver(X).observe(r,{childList:!0,subtree:!0,attributes:!0}):(r.addEventListener("DOMNodeInserted",X,!0),r.addEventListener("DOMAttrModified",X,!0),setInterval(X,999)),s("hashchange",X,!0),["focus","mouseover","click","load","transitionend","animationend","webkitAnimationEnd"].forEach(function(t){e.addEventListener(t,X,!0)}),/d$|^c/.test(e.readyState)?rt():(s("load",rt),e.addEventListener("DOMContentLoaded",X),l(rt,2e4)),n.elements.length?(V(),E._lsFlush()):X()},checkElems:X,unveil:it}}(),P=(j=_(function(t,e,n,i){var r,a,o;if(t._lazysizesWidth=i,i+="px",t.setAttribute("sizes",i),d.test(e.nodeName||""))for(r=e.getElementsByTagName("source"),a=0,o=r.length;a<o;a++)r[a].setAttribute("sizes",i);n.detail.dataAttr||h(t,n.detail)}),R=function(t,e,n){var i,r=t.parentNode;r&&(n=C(t,r,n),(i=z(t,"lazybeforesizes",{width:n,dataAttr:!!e})).defaultPrevented||(n=i.detail.width)&&n!==t._lazysizesWidth&&j(t,r,i,n))},k=M(function(){var t,e=F.length;if(e)for(t=0;t<e;t++)R(F[t])}),{_:function(){F=e.getElementsByClassName(i.autosizesClass),s("resize",k)},checkElems:k,updateElem:R}),B=function(){B.i||(B.i=!0,P._(),W._())};var F,j,R,k;return n={cfg:i,autoSizer:P,loader:W,init:B,uP:h,aC:y,rC:p,hC:v,fire:z,gW:C,rAF:E}}(e,e.document);e.lazySizes=i,t.exports&&(t.exports=i)}(window)}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 0:
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(8);
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, exports) {
+
+	(function(window, factory) {
+		var lazySizes = factory(window, window.document);
+		window.lazySizes = lazySizes;
+		if(typeof module == 'object' && module.exports){
+			module.exports = lazySizes;
+		}
+	}(window, function l(window, document) {
+		'use strict';
+		/*jshint eqnull:true */
+		if(!document.getElementsByClassName){return;}
+
+		var lazysizes, lazySizesConfig;
+
+		var docElem = document.documentElement;
+
+		var Date = window.Date;
+
+		var supportPicture = window.HTMLPictureElement;
+
+		var _addEventListener = 'addEventListener';
+
+		var _getAttribute = 'getAttribute';
+
+		var addEventListener = window[_addEventListener];
+
+		var setTimeout = window.setTimeout;
+
+		var requestAnimationFrame = window.requestAnimationFrame || setTimeout;
+
+		var requestIdleCallback = window.requestIdleCallback;
+
+		var regPicture = /^picture$/i;
+
+		var loadEvents = ['load', 'error', 'lazyincluded', '_lazyloaded'];
+
+		var regClassCache = {};
+
+		var forEach = Array.prototype.forEach;
+
+		var hasClass = function(ele, cls) {
+			if(!regClassCache[cls]){
+				regClassCache[cls] = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+			}
+			return regClassCache[cls].test(ele[_getAttribute]('class') || '') && regClassCache[cls];
+		};
+
+		var addClass = function(ele, cls) {
+			if (!hasClass(ele, cls)){
+				ele.setAttribute('class', (ele[_getAttribute]('class') || '').trim() + ' ' + cls);
+			}
+		};
+
+		var removeClass = function(ele, cls) {
+			var reg;
+			if ((reg = hasClass(ele,cls))) {
+				ele.setAttribute('class', (ele[_getAttribute]('class') || '').replace(reg, ' '));
+			}
+		};
+
+		var addRemoveLoadEvents = function(dom, fn, add){
+			var action = add ? _addEventListener : 'removeEventListener';
+			if(add){
+				addRemoveLoadEvents(dom, fn);
+			}
+			loadEvents.forEach(function(evt){
+				dom[action](evt, fn);
+			});
+		};
+
+		var triggerEvent = function(elem, name, detail, noBubbles, noCancelable){
+			var event = document.createEvent('CustomEvent');
+
+			if(!detail){
+				detail = {};
+			}
+
+			detail.instance = lazysizes;
+
+			event.initCustomEvent(name, !noBubbles, !noCancelable, detail);
+
+			elem.dispatchEvent(event);
+			return event;
+		};
+
+		var updatePolyfill = function (el, full){
+			var polyfill;
+			if( !supportPicture && ( polyfill = (window.picturefill || lazySizesConfig.pf) ) ){
+				polyfill({reevaluate: true, elements: [el]});
+			} else if(full && full.src){
+				el.src = full.src;
+			}
+		};
+
+		var getCSS = function (elem, style){
+			return (getComputedStyle(elem, null) || {})[style];
+		};
+
+		var getWidth = function(elem, parent, width){
+			width = width || elem.offsetWidth;
+
+			while(width < lazySizesConfig.minSize && parent && !elem._lazysizesWidth){
+				width =  parent.offsetWidth;
+				parent = parent.parentNode;
+			}
+
+			return width;
+		};
+
+		var rAF = (function(){
+			var running, waiting;
+			var firstFns = [];
+			var secondFns = [];
+			var fns = firstFns;
+
+			var run = function(){
+				var runFns = fns;
+
+				fns = firstFns.length ? secondFns : firstFns;
+
+				running = true;
+				waiting = false;
+
+				while(runFns.length){
+					runFns.shift()();
+				}
+
+				running = false;
+			};
+
+			var rafBatch = function(fn, queue){
+				if(running && !queue){
+					fn.apply(this, arguments);
+				} else {
+					fns.push(fn);
+
+					if(!waiting){
+						waiting = true;
+						(document.hidden ? setTimeout : requestAnimationFrame)(run);
+					}
+				}
+			};
+
+			rafBatch._lsFlush = run;
+
+			return rafBatch;
+		})();
+
+		var rAFIt = function(fn, simple){
+			return simple ?
+				function() {
+					rAF(fn);
+				} :
+				function(){
+					var that = this;
+					var args = arguments;
+					rAF(function(){
+						fn.apply(that, args);
+					});
+				}
+			;
+		};
+
+		var throttle = function(fn){
+			var running;
+			var lastTime = 0;
+			var gDelay = 125;
+			var rICTimeout = lazySizesConfig.ricTimeout;
+			var run = function(){
+				running = false;
+				lastTime = Date.now();
+				fn();
+			};
+			var idleCallback = requestIdleCallback && lazySizesConfig.ricTimeout ?
+				function(){
+					requestIdleCallback(run, {timeout: rICTimeout});
+
+					if(rICTimeout !== lazySizesConfig.ricTimeout){
+						rICTimeout = lazySizesConfig.ricTimeout;
+					}
+				} :
+				rAFIt(function(){
+					setTimeout(run);
+				}, true)
+			;
+
+			return function(isPriority){
+				var delay;
+
+				if((isPriority = isPriority === true)){
+					rICTimeout = 33;
+				}
+
+				if(running){
+					return;
+				}
+
+				running =  true;
+
+				delay = gDelay - (Date.now() - lastTime);
+
+				if(delay < 0){
+					delay = 0;
+				}
+
+				if(isPriority || (delay < 9 && requestIdleCallback)){
+					idleCallback();
+				} else {
+					setTimeout(idleCallback, delay);
+				}
+			};
+		};
+
+		//based on http://modernjavascript.blogspot.de/2013/08/building-better-debounce.html
+		var debounce = function(func) {
+			var timeout, timestamp;
+			var wait = 99;
+			var run = function(){
+				timeout = null;
+				func();
+			};
+			var later = function() {
+				var last = Date.now() - timestamp;
+
+				if (last < wait) {
+					setTimeout(later, wait - last);
+				} else {
+					(requestIdleCallback || run)(run);
+				}
+			};
+
+			return function() {
+				timestamp = Date.now();
+
+				if (!timeout) {
+					timeout = setTimeout(later, wait);
+				}
+			};
+		};
+
+		(function(){
+			var prop;
+
+			var lazySizesDefaults = {
+				lazyClass: 'lazyload',
+				loadedClass: 'lazyloaded',
+				loadingClass: 'lazyloading',
+				preloadClass: 'lazypreload',
+				errorClass: 'lazyerror',
+				//strictClass: 'lazystrict',
+				autosizesClass: 'lazyautosizes',
+				srcAttr: 'data-src',
+				srcsetAttr: 'data-srcset',
+				sizesAttr: 'data-sizes',
+				//preloadAfterLoad: false,
+				minSize: 40,
+				customMedia: {},
+				init: true,
+				expFactor: 1.5,
+				hFac: 0.8,
+				loadMode: 2,
+				loadHidden: true,
+				ricTimeout: 300,
+			};
+
+			lazySizesConfig = window.lazySizesConfig || window.lazysizesConfig || {};
+
+			for(prop in lazySizesDefaults){
+				if(!(prop in lazySizesConfig)){
+					lazySizesConfig[prop] = lazySizesDefaults[prop];
+				}
+			}
+
+			window.lazySizesConfig = lazySizesConfig;
+
+			setTimeout(function(){
+				if(lazySizesConfig.init){
+					init();
+				}
+			});
+		})();
+
+		var loader = (function(){
+			var preloadElems, isCompleted, resetPreloadingTimer, loadMode, started;
+
+			var eLvW, elvH, eLtop, eLleft, eLright, eLbottom;
+
+			var defaultExpand, preloadExpand, hFac;
+
+			var regImg = /^img$/i;
+			var regIframe = /^iframe$/i;
+
+			var supportScroll = ('onscroll' in window) && !(/glebot/.test(navigator.userAgent));
+
+			var shrinkExpand = 0;
+			var currentExpand = 0;
+
+			var isLoading = 0;
+			var lowRuns = -1;
+
+			var resetPreloading = function(e){
+				isLoading--;
+				if(e && e.target){
+					addRemoveLoadEvents(e.target, resetPreloading);
+				}
+
+				if(!e || isLoading < 0 || !e.target){
+					isLoading = 0;
+				}
+			};
+
+			var isNestedVisible = function(elem, elemExpand){
+				var outerRect;
+				var parent = elem;
+				var visible = getCSS(document.body, 'visibility') == 'hidden' || getCSS(elem, 'visibility') != 'hidden';
+
+				eLtop -= elemExpand;
+				eLbottom += elemExpand;
+				eLleft -= elemExpand;
+				eLright += elemExpand;
+
+				while(visible && (parent = parent.offsetParent) && parent != document.body && parent != docElem){
+					visible = ((getCSS(parent, 'opacity') || 1) > 0);
+
+					if(visible && getCSS(parent, 'overflow') != 'visible'){
+						outerRect = parent.getBoundingClientRect();
+						visible = eLright > outerRect.left &&
+							eLleft < outerRect.right &&
+							eLbottom > outerRect.top - 1 &&
+							eLtop < outerRect.bottom + 1
+						;
+					}
+				}
+
+				return visible;
+			};
+
+			var checkElements = function() {
+				var eLlen, i, rect, autoLoadElem, loadedSomething, elemExpand, elemNegativeExpand, elemExpandVal, beforeExpandVal;
+
+				var lazyloadElems = lazysizes.elements;
+
+				if((loadMode = lazySizesConfig.loadMode) && isLoading < 8 && (eLlen = lazyloadElems.length)){
+
+					i = 0;
+
+					lowRuns++;
+
+					if(preloadExpand == null){
+						if(!('expand' in lazySizesConfig)){
+							lazySizesConfig.expand = docElem.clientHeight > 500 && docElem.clientWidth > 500 ? 500 : 370;
+						}
+
+						defaultExpand = lazySizesConfig.expand;
+						preloadExpand = defaultExpand * lazySizesConfig.expFactor;
+					}
+
+					if(currentExpand < preloadExpand && isLoading < 1 && lowRuns > 2 && loadMode > 2 && !document.hidden){
+						currentExpand = preloadExpand;
+						lowRuns = 0;
+					} else if(loadMode > 1 && lowRuns > 1 && isLoading < 6){
+						currentExpand = defaultExpand;
+					} else {
+						currentExpand = shrinkExpand;
+					}
+
+					for(; i < eLlen; i++){
+
+						if(!lazyloadElems[i] || lazyloadElems[i]._lazyRace){continue;}
+
+						if(!supportScroll){unveilElement(lazyloadElems[i]);continue;}
+
+						if(!(elemExpandVal = lazyloadElems[i][_getAttribute]('data-expand')) || !(elemExpand = elemExpandVal * 1)){
+							elemExpand = currentExpand;
+						}
+
+						if(beforeExpandVal !== elemExpand){
+							eLvW = innerWidth + (elemExpand * hFac);
+							elvH = innerHeight + elemExpand;
+							elemNegativeExpand = elemExpand * -1;
+							beforeExpandVal = elemExpand;
+						}
+
+						rect = lazyloadElems[i].getBoundingClientRect();
+
+						if ((eLbottom = rect.bottom) >= elemNegativeExpand &&
+							(eLtop = rect.top) <= elvH &&
+							(eLright = rect.right) >= elemNegativeExpand * hFac &&
+							(eLleft = rect.left) <= eLvW &&
+							(eLbottom || eLright || eLleft || eLtop) &&
+							(lazySizesConfig.loadHidden || getCSS(lazyloadElems[i], 'visibility') != 'hidden') &&
+							((isCompleted && isLoading < 3 && !elemExpandVal && (loadMode < 3 || lowRuns < 4)) || isNestedVisible(lazyloadElems[i], elemExpand))){
+							unveilElement(lazyloadElems[i]);
+							loadedSomething = true;
+							if(isLoading > 9){break;}
+						} else if(!loadedSomething && isCompleted && !autoLoadElem &&
+							isLoading < 4 && lowRuns < 4 && loadMode > 2 &&
+							(preloadElems[0] || lazySizesConfig.preloadAfterLoad) &&
+							(preloadElems[0] || (!elemExpandVal && ((eLbottom || eLright || eLleft || eLtop) || lazyloadElems[i][_getAttribute](lazySizesConfig.sizesAttr) != 'auto')))){
+							autoLoadElem = preloadElems[0] || lazyloadElems[i];
+						}
+					}
+
+					if(autoLoadElem && !loadedSomething){
+						unveilElement(autoLoadElem);
+					}
+				}
+			};
+
+			var throttledCheckElements = throttle(checkElements);
+
+			var switchLoadingClass = function(e){
+				addClass(e.target, lazySizesConfig.loadedClass);
+				removeClass(e.target, lazySizesConfig.loadingClass);
+				addRemoveLoadEvents(e.target, rafSwitchLoadingClass);
+				triggerEvent(e.target, 'lazyloaded');
+			};
+			var rafedSwitchLoadingClass = rAFIt(switchLoadingClass);
+			var rafSwitchLoadingClass = function(e){
+				rafedSwitchLoadingClass({target: e.target});
+			};
+
+			var changeIframeSrc = function(elem, src){
+				try {
+					elem.contentWindow.location.replace(src);
+				} catch(e){
+					elem.src = src;
+				}
+			};
+
+			var handleSources = function(source){
+				var customMedia;
+
+				var sourceSrcset = source[_getAttribute](lazySizesConfig.srcsetAttr);
+
+				if( (customMedia = lazySizesConfig.customMedia[source[_getAttribute]('data-media') || source[_getAttribute]('media')]) ){
+					source.setAttribute('media', customMedia);
+				}
+
+				if(sourceSrcset){
+					source.setAttribute('srcset', sourceSrcset);
+				}
+			};
+
+			var lazyUnveil = rAFIt(function (elem, detail, isAuto, sizes, isImg){
+				var src, srcset, parent, isPicture, event, firesLoad;
+
+				if(!(event = triggerEvent(elem, 'lazybeforeunveil', detail)).defaultPrevented){
+
+					if(sizes){
+						if(isAuto){
+							addClass(elem, lazySizesConfig.autosizesClass);
+						} else {
+							elem.setAttribute('sizes', sizes);
+						}
+					}
+
+					srcset = elem[_getAttribute](lazySizesConfig.srcsetAttr);
+					src = elem[_getAttribute](lazySizesConfig.srcAttr);
+
+					if(isImg) {
+						parent = elem.parentNode;
+						isPicture = parent && regPicture.test(parent.nodeName || '');
+					}
+
+					firesLoad = detail.firesLoad || (('src' in elem) && (srcset || src || isPicture));
+
+					event = {target: elem};
+
+					if(firesLoad){
+						addRemoveLoadEvents(elem, resetPreloading, true);
+						clearTimeout(resetPreloadingTimer);
+						resetPreloadingTimer = setTimeout(resetPreloading, 2500);
+
+						addClass(elem, lazySizesConfig.loadingClass);
+						addRemoveLoadEvents(elem, rafSwitchLoadingClass, true);
+					}
+
+					if(isPicture){
+						forEach.call(parent.getElementsByTagName('source'), handleSources);
+					}
+
+					if(srcset){
+						elem.setAttribute('srcset', srcset);
+					} else if(src && !isPicture){
+						if(regIframe.test(elem.nodeName)){
+							changeIframeSrc(elem, src);
+						} else {
+							elem.src = src;
+						}
+					}
+
+					if(isImg && (srcset || isPicture)){
+						updatePolyfill(elem, {src: src});
+					}
+				}
+
+				if(elem._lazyRace){
+					delete elem._lazyRace;
+				}
+				removeClass(elem, lazySizesConfig.lazyClass);
+
+				rAF(function(){
+					if( !firesLoad || (elem.complete && elem.naturalWidth > 1)){
+						if(firesLoad){
+							resetPreloading(event);
+						} else {
+							isLoading--;
+						}
+						switchLoadingClass(event);
+					}
+				}, true);
+			});
+
+			var unveilElement = function (elem){
+				var detail;
+
+				var isImg = regImg.test(elem.nodeName);
+
+				//allow using sizes="auto", but don't use. it's invalid. Use data-sizes="auto" or a valid value for sizes instead (i.e.: sizes="80vw")
+				var sizes = isImg && (elem[_getAttribute](lazySizesConfig.sizesAttr) || elem[_getAttribute]('sizes'));
+				var isAuto = sizes == 'auto';
+
+				if( (isAuto || !isCompleted) && isImg && (elem[_getAttribute]('src') || elem.srcset) && !elem.complete && !hasClass(elem, lazySizesConfig.errorClass) && hasClass(elem, lazySizesConfig.lazyClass)){return;}
+
+				detail = triggerEvent(elem, 'lazyunveilread').detail;
+
+				if(isAuto){
+					 autoSizer.updateElem(elem, true, elem.offsetWidth);
+				}
+
+				elem._lazyRace = true;
+				isLoading++;
+
+				lazyUnveil(elem, detail, isAuto, sizes, isImg);
+			};
+
+			var onload = function(){
+				if(isCompleted){return;}
+				if(Date.now() - started < 999){
+					setTimeout(onload, 999);
+					return;
+				}
+				var afterScroll = debounce(function(){
+					lazySizesConfig.loadMode = 3;
+					throttledCheckElements();
+				});
+
+				isCompleted = true;
+
+				lazySizesConfig.loadMode = 3;
+
+				throttledCheckElements();
+
+				addEventListener('scroll', function(){
+					if(lazySizesConfig.loadMode == 3){
+						lazySizesConfig.loadMode = 2;
+					}
+					afterScroll();
+				}, true);
+			};
+
+			return {
+				_: function(){
+					started = Date.now();
+
+					lazysizes.elements = document.getElementsByClassName(lazySizesConfig.lazyClass);
+					preloadElems = document.getElementsByClassName(lazySizesConfig.lazyClass + ' ' + lazySizesConfig.preloadClass);
+					hFac = lazySizesConfig.hFac;
+
+					addEventListener('scroll', throttledCheckElements, true);
+
+					addEventListener('resize', throttledCheckElements, true);
+
+					if(window.MutationObserver){
+						new MutationObserver( throttledCheckElements ).observe( docElem, {childList: true, subtree: true, attributes: true} );
+					} else {
+						docElem[_addEventListener]('DOMNodeInserted', throttledCheckElements, true);
+						docElem[_addEventListener]('DOMAttrModified', throttledCheckElements, true);
+						setInterval(throttledCheckElements, 999);
+					}
+
+					addEventListener('hashchange', throttledCheckElements, true);
+
+					//, 'fullscreenchange'
+					['focus', 'mouseover', 'click', 'load', 'transitionend', 'animationend', 'webkitAnimationEnd'].forEach(function(name){
+						document[_addEventListener](name, throttledCheckElements, true);
+					});
+
+					if((/d$|^c/.test(document.readyState))){
+						onload();
+					} else {
+						addEventListener('load', onload);
+						document[_addEventListener]('DOMContentLoaded', throttledCheckElements);
+						setTimeout(onload, 20000);
+					}
+
+					if(lazysizes.elements.length){
+						checkElements();
+						rAF._lsFlush();
+					} else {
+						throttledCheckElements();
+					}
+				},
+				checkElems: throttledCheckElements,
+				unveil: unveilElement
+			};
+		})();
+
+
+		var autoSizer = (function(){
+			var autosizesElems;
+
+			var sizeElement = rAFIt(function(elem, parent, event, width){
+				var sources, i, len;
+				elem._lazysizesWidth = width;
+				width += 'px';
+
+				elem.setAttribute('sizes', width);
+
+				if(regPicture.test(parent.nodeName || '')){
+					sources = parent.getElementsByTagName('source');
+					for(i = 0, len = sources.length; i < len; i++){
+						sources[i].setAttribute('sizes', width);
+					}
+				}
+
+				if(!event.detail.dataAttr){
+					updatePolyfill(elem, event.detail);
+				}
+			});
+			var getSizeElement = function (elem, dataAttr, width){
+				var event;
+				var parent = elem.parentNode;
+
+				if(parent){
+					width = getWidth(elem, parent, width);
+					event = triggerEvent(elem, 'lazybeforesizes', {width: width, dataAttr: !!dataAttr});
+
+					if(!event.defaultPrevented){
+						width = event.detail.width;
+
+						if(width && width !== elem._lazysizesWidth){
+							sizeElement(elem, parent, event, width);
+						}
+					}
+				}
+			};
+
+			var updateElementsSizes = function(){
+				var i;
+				var len = autosizesElems.length;
+				if(len){
+					i = 0;
+
+					for(; i < len; i++){
+						getSizeElement(autosizesElems[i]);
+					}
+				}
+			};
+
+			var debouncedUpdateElementsSizes = debounce(updateElementsSizes);
+
+			return {
+				_: function(){
+					autosizesElems = document.getElementsByClassName(lazySizesConfig.autosizesClass);
+					addEventListener('resize', debouncedUpdateElementsSizes);
+				},
+				checkElems: debouncedUpdateElementsSizes,
+				updateElem: getSizeElement
+			};
+		})();
+
+		var init = function(){
+			if(!init.i){
+				init.i = true;
+				autoSizer._();
+				loader._();
+			}
+		};
+
+		lazysizes = {
+			cfg: lazySizesConfig,
+			autoSizer: autoSizer,
+			loader: loader,
+			init: init,
+			uP: updatePolyfill,
+			aC: addClass,
+			rC: removeClass,
+			hC: hasClass,
+			fire: triggerEvent,
+			gW: getWidth,
+			rAF: rAF,
+		};
+
+		return lazysizes;
+	}
+	));
+
+
+/***/ })
+
+/******/ });
